@@ -1,0 +1,20 @@
+/**
+* Base Anchor Tag Styles
+*/
+a {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: $colourText;
+  }
+}

@@ -1,0 +1,14 @@
+/**
+* Hide Elements but Display for Screen Readers
+*/
+.hidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  border: 0;
+
+  clip: rect(0 0 0 0);
+}

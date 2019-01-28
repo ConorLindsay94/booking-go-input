@@ -1,0 +1,9 @@
+/**
+* Site Elements Box Sizing
+*/
+* {
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}

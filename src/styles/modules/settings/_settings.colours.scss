@@ -1,0 +1,31 @@
+//-------------------------------------------
+// _settings.colours.scss
+//-------------------------------------------
+
+// We use actual colour names to define the variables. This prevents ambiguities when naming e.g. $grey, $lightGrey, $lighterGrey.
+
+// http://www.color-blindness.com/color-name-hue
+
+// Primary/Brand Colours
+$colourTangerineYellow: #ffcc00;
+
+// Secondary/Complimentary Colours
+$colourShamrock: #30c89c;
+
+// Shades (from white to black)
+$colourWhite: #ffffff;
+$colourWhiteSmoke: #f3f3f3;
+$colourDarkGray: #aaaaaa;
+$colourSuvaGrey: #878787;
+$colourDimGray: #666666;
+$colourBlack: #000000;
+
+// Social
+$colourTwitter: #33b8e7;
+
+// Typography
+$colourPrimary: $colourTangerineYellow; // Primary color
+$colourSecondary: $colourBlack; // Secondary color
+$colourTertiary: $colourDarkGray; // Tertiary color
+$colourText: $colourBlack; // Text Font
+$colourError: #ff0000; // Error message colour

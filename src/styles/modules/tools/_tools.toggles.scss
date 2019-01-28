@@ -1,0 +1,27 @@
+//-------------------------------------------
+// _components.buttons.scss
+//-------------------------------------------
+
+// Toggle buttons
+@mixin toggle($class: false) {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  background: none;
+  border: 0;
+  &__icon {
+    &--open {
+      display: block;
+      .#{$class} & {
+        display: none;
+      }
+    }
+    &--close {
+      display: none;
+      .#{$class} & {
+        display: block;
+      }
+    }
+  }
+}
