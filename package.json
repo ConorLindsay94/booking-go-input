@@ -20,6 +20,7 @@
   "license": "ISC",
   "homepage": "https://github.com/ConorLindsay94/booking-go-input",
   "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
@@ -62,5 +63,10 @@
     "webpack-dev-server": "^3.1.4",
     "webpack-svgstore-plugin": "^4.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
 }

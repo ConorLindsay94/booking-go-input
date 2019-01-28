@@ -1,0 +1,12 @@
+// Site breakpoints
+$site-breakpoints: (
+  vs: 350,  // Very Small
+  xs: 450,  // Extra Small
+  sm: 530,  // Small Medium
+  sl: 620,  // Small
+  ms: 768,  // Medium Small
+  md: 870,  // Medium
+  ml: 1024, // Medium Large
+  lg: 1280, // Large
+  xl: 1600  // Extra Large
+) !default;

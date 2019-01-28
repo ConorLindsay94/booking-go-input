@@ -1,0 +1,46 @@
+/**
+ * Mixins.Breakpoints
+ */
+
+// Media breakpoint up
+// Apply @content to the given breakpoint and wider.
+@mixin media-up($size) {
+  $min: map-get($site-breakpoints, $size);
+  @if $min {
+    @media (min-width: unquote($min+"px")) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a your breakpoint named `#{$size}` in site-breakpoints.";
+  }
+}
+
+// Media breakpoint down
+// Apply @content to the given breakpoint and narrower.
+@mixin media-down($size) {
+  $max: map-get($site-breakpoints, $size);
+  @if $max {
+    @media (max-width: unquote($max+"px")) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a your breakpoint named `#{$max}` in site-breakpoints.";
+  }
+}
+
+// Media breakpoint down
+// Apply @content to the given breakpoint and narrower.
+@mixin media-between($lowest, $highest) {
+  $min: map-get($site-breakpoints, $lowest);
+  $max: map-get($site-breakpoints, $highest);
+  @if $min !=null and $max !=null {
+    @media (min-width: unquote($min+"px")) and (max-width: unquote($max+"px")) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Couldn't find a your either the lowest or the highest in site-breakpoints";
+  }
+}
