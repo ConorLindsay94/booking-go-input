@@ -13,11 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:ConorLindsay94/booking-go-input.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Conor Lindsay",
   "license": "ISC",
+  "homepage": "https://github.com/ConorLindsay94/booking-go-input",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
