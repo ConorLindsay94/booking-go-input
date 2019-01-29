@@ -28,40 +28,5 @@
     flex-direction: column;
     font-weight: 300;
     background-color: #ffffff;
-    article {
-      padding: 10px;
-      border-bottom: 1px solid #eaeaea;
-      border-radius: 2px;
-      div {
-        display: inline-block;
-        margin-right: 10px;
-        padding: 5px;
-        width: 60px;
-        color: #ffffff;
-        text-align: center;
-        border-radius: 5px;
-      }
-      .airport {
-        background-color: #f2817f;
-      }
-      .city {
-        background-color: #6eb8fa;
-      }
-      .station {
-        background-color: #9d9dbb;
-      }
-      .district {
-        background-color: #70d58e;
-      }
-      .place {
-        background-color: #8970d5;
-      }
-      .region {
-        background-color: #d470d5;
-      }
-    }
-    .italic {
-      font-style: italic;
-    }
   }
 }

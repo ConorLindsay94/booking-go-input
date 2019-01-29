@@ -1,0 +1,58 @@
+.search-input__results-result {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid #eaeaea;
+  border-radius: 2px;
+  cursor: pointer;
+  &:hover {
+    background-color: #e4f2ff;
+  }
+  .location-type {
+    display: inline-block;
+    margin-right: 10px;
+    width: 60px;
+    color: #ffffff;
+    font-size: .7rem;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+    &__text {
+      padding: 5px 10px;
+      border-radius: 5px;
+      &--airport {
+        background-color: #f2817f;
+      }
+      &--city {
+        background-color: #6eb8fa;
+      }
+      &--station {
+        background-color: #9d9dbb;
+      }
+      &--district {
+        background-color: #70d58e;
+      }
+      &--place {
+        background-color: #8970d5;
+      }
+      &--region {
+        background-color: #d470d5;
+      }
+    }
+  }
+  &__name {
+    display: inline-block;
+    &-city {
+      display: block;
+      margin-bottom: 5px;
+    }
+    &-meta {
+      display: block;
+      font-size: .8rem;
+    }
+  }
+  &--no-results {
+    font-style: italic;
+    cursor: initial;
+  }
+}

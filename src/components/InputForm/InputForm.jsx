@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import getHandler from '../../util/get-handler';
+import Location from '../Location/Location';
 
 class InputForm extends Component {
 
@@ -11,7 +12,9 @@ class InputForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.getResults = this.getResults.bind(this);
     this.determineType = this.determineType.bind(this);
+    this.stageLocation = this.stageLocation.bind(this);
   }
 
   handleChange(e) {
@@ -21,34 +24,34 @@ class InputForm extends Component {
       searchText: value,
       isLoading: value.length >= 2,
       results: null,
+      stagedLocation: null,
+    }, () => {
+      if (this.state.searchText.length >= 2 && !this.state.stagedLocation) {
+        this.getResults();
+      }
     });
+  }
 
-    if (value.length >= 2) {
-      getHandler('FTSAutocomplete.do', {
-        solrIndex: 'fts_en',
-        solrRows: '6',
-        solrTerm: e.target.value,
-      }).then((results) => {
-        if (this.state.searchText.length >=2) {
-          // Update results accordingly
-          this.setState({
-            isLoading: false,
-            results: [...results.results.docs],
-          });
-        } else {
-          // Reset results back to null so box disappears
-          this.setState({
-            isLoading: false,
-            results: null,
-          });
-        }
-      });
-    } else {
-      this.setState({
-        isLoading: false,
-        results: null,
-      });
-    }
+  getResults() {
+    getHandler('FTSAutocomplete.do', {
+      solrIndex: 'fts_en',
+      solrRows: '6',
+      solrTerm: this.state.searchText,
+    }).then((results) => {
+      if (this.state.searchText.length >=2) {
+        // Update results accordingly
+        this.setState({
+          isLoading: false,
+          results: [...results.results.docs],
+        });
+      } else {
+        // Reset results back to null so box disappears
+        this.setState({
+          isLoading: false,
+          results: null,
+        });
+      }
+    });
   }
 
   determineType(type) {
@@ -63,8 +66,25 @@ class InputForm extends Component {
     return typeMap[type];
   }
 
+  stageLocation(location) {
+    let stagedLocation = location.name;
+
+    if (location.city) {
+      stagedLocation += `, ${location.city}, ${location.country}`;
+    } else if (location.region) {
+      stagedLocation += `, ${location.region}, ${location.country}`;
+    } else {
+      stagedLocation += `, ${location.country}`;
+    }
+
+    this.setState({
+      stagedLocation,
+      results: null,
+    });
+  }
+
   render() {
-    const { searchText, isLoading, results } = this.state;
+    const { searchText, isLoading, results, stagedLocation } = this.state;
     return (
       <section className="search-input">
         <h1>Where do you want to go?</h1>
@@ -77,7 +97,7 @@ class InputForm extends Component {
             id="booking-go-input"
             type="text"
             placeholder="city, airport, station, region and district..."
-            value={searchText}
+            value={stagedLocation || searchText}
             onChange={this.handleChange}
           />
           {isLoading &&
@@ -85,22 +105,13 @@ class InputForm extends Component {
           }
         </div>
         <div className="search-input__results">
-          {results && results.map(result => {
-            const placeType = this.determineType(result.placeType);
-            return (
-              <article
-                className={`search-input__results-result ${result.name === 'No results found' ? 'italic' : ''}`}
-                key={result.placeKey}
-              >
-                {placeType &&
-                  <div className={placeType ? placeType.toLowerCase() : 'place'}>
-                    {placeType ? placeType : 'Place'}
-                  </div>
-                }
-                {result.name}
-              </article>
-            )
-          })}
+          {results && results.map(result => (
+            <Location
+              result={result}
+              determineType={this.determineType}
+              stageLocation={this.stageLocation}
+            />
+          ))}
         </div>
       </section>
     )
